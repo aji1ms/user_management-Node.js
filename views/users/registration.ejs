@@ -1,0 +1,73 @@
+<%- include('../layouts/header.ejs') %>
+
+<div class="container">
+    <h1>User Registration</h1>
+    <br>
+    <form action="/register" method="post" id="myform" onsubmit="return validateForm()">
+        <input type="text" id="username" name="name" placeholder="Enter your name" required>
+        <span id="name-error" class="error"></span>
+
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <span id="email-error" class="error"></span>
+
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        <span id="password-error" class="error"></span>
+
+        <p>Already have an account? <a href="/login">Login</a></p>
+        <input type="submit" value="Register">
+    </form>
+
+    <% if (typeof message !== 'undefined') { %>
+    <p class="message"><%= message %></p>
+    <% } %>
+</div>
+
+<%- include('../layouts/footer.ejs') %>
+
+<script>
+    // JavaScript for Form Validation
+    function validateForm() {
+        let isValid = true;
+
+        // Name Validation
+        const nameField = document.getElementById('username');
+        const nameError = document.getElementById('name-error');
+        const nameRegex = /^[a-zA-Z]+$/;
+        if (!nameRegex.test(nameField.value)) {
+            nameError.textContent = 'Name must contain only letters without spaces.';
+            nameField.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            nameError.textContent = '';
+            nameField.style.borderColor = '';
+        }
+
+        // Email Validation
+        const emailField = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(emailField.value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+            emailField.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            emailError.textContent = '';
+            emailField.style.borderColor = '';
+        }
+
+        // Password Validation
+        const passwordField = document.getElementById('password');
+        const passwordError = document.getElementById('password-error');
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        if (!passwordRegex.test(passwordField.value)) {
+            passwordError.textContent = 'Password must be at least 8 characters long, include an uppercase letter, a number, and a special character.';
+            passwordField.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            passwordError.textContent = '';
+            passwordField.style.borderColor = '';
+        }
+
+        return isValid;
+    }
+</script>

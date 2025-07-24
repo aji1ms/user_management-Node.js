@@ -1,0 +1,124 @@
+/* Container Styling */
+.container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 20px;
+   font-family: Arial, sans-serif;
+   color: #333;
+}
+
+/* Header */
+h1 {
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+/* Buttons Section */
+.buttonsd {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 20px;
+}
+
+.buttonsd a {
+   text-decoration: none;
+   padding: 10px 15px;
+   background-color: #007bff;
+   color: #fff;
+   border-radius: 5px;
+   font-size: 14px;
+}
+
+.buttonsd a:hover {
+   background-color: #0056b3;
+}
+
+/* Search Bar */
+.search-bar {
+   margin-bottom: 20px;
+   text-align: center;
+}
+
+.search-bar form {
+   display: inline-block;
+   width: 100%;
+   max-width: 600px;
+}
+
+.search-bar input[type="text"] {
+   width: 80%;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   font-size: 16px;
+}
+
+.search-bar button {
+   padding: 10px 15px;
+   border: none;
+   background-color:  #007bff;
+   color: #fff;
+   font-size: 16px;
+   border-radius: 4px;
+   cursor: pointer;
+}
+
+.search-bar button:hover {
+   background-color: #0056b3;
+}
+
+/* Table Styling */
+table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+}
+
+table th,
+table td {
+   border: 1px solid #ddd;
+   padding: 10px;
+   text-align: left;
+}
+
+table th {
+   background-color: #f4f4f4;
+   font-weight: bold;
+}
+
+table tr:nth-child(even) {
+   background-color: #f9f9f9;
+}
+
+table tr:hover {
+   background-color: #f1f1f1;
+}
+
+.actions button {
+   margin: 0 5px;
+   padding: 5px 10px;
+   border: none;
+   background-color: #007bff;
+   color: #fff;
+   border-radius: 3px;
+   cursor: pointer;
+}
+
+.actions button.delete {
+   background-color: #dc3545;
+}
+
+.actions button a {
+   color: #fff;
+   text-decoration: none;
+}
+
+.actions button:hover {
+   opacity: 0.9;
+}
+
+/* Centered "No Users Found" */
+table td[colspan="5"] {
+   font-style: italic;
+   color: #999;
+}

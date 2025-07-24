@@ -1,0 +1,58 @@
+<%- include('../layouts/header.ejs') %>
+
+<div class="container">
+   <h1>Add New User</h1>
+
+   <form id="addUserForm" action="" method="post">
+      <input type="text" id="name" name="name" placeholder="Enter Name" required>
+      <input type="email" id="email" name="email" placeholder="Enter Email" required>
+      <input type="password" id="password" name="password" placeholder="Enter Password" required>
+      <input type="submit" value="Add User">
+      <div id="error" class="error-message"></div>
+   </form>
+
+   <% if (typeof message !== 'undefined') { %>
+      <p class="message"><%= message %></p>
+   <% } %>
+
+   <div class="back-button">
+      <a href="/admin/dashboard">Go Back</a>
+   </div>
+</div>
+
+<script>
+   document.getElementById('addUserForm').addEventListener('submit', function (e) {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('error');
+      errorDiv.innerHTML = '';
+
+      // Name validation: No spaces allowed
+      if (name === '' || /\s/.test(name)) {
+         errorDiv.textContent = 'Name cannot be empty or contain spaces.';
+         e.preventDefault();
+         return false;
+      }
+
+      // Email validation: Using regex pattern
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+         errorDiv.textContent = 'Please enter a valid email address.';
+         e.preventDefault();
+         return false;
+      }
+
+      // Password validation: Minimum 8 characters, including one uppercase, one number, and one special character
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (!passwordPattern.test(password)) {
+         errorDiv.textContent = 'Password must be at least 8 characters long and include one uppercase letter, one number, and one special character.';
+         e.preventDefault();
+         return false;
+      }
+
+      return true;
+   });
+</script>
+
+<% include('../layouts/footer.ejs') %>
