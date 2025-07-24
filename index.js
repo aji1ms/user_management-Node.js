@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-mongoose.connect("mongodb://127.0.0.1:27017/user_management_system")
+mongoose.connect("mongodb+srv://ajimsismail123:4aXdI5YcFRIm4uZa@cluster0.5cw8pis.mongodb.net/")
 
 const express = require("express")
 const app = express()
